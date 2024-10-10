@@ -30,7 +30,7 @@ public class Main extends ApplicationAdapter {
         Event.print(Temp.Window.deviceWidth, Temp.Window.deviceHeight);
         
         batch = new SpriteBatch();
-        image = DrawLevel.draw();
+        image = DrawLevel.draw(1);
         font = new BitmapFont();
         font2 = new BitmapFont();
     }

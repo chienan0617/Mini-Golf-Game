@@ -58,6 +58,20 @@ public class Event {
             return null;
         } 
     }
+
+    /*
+     * To raise the error code
+     * 
+     * @param errorCode :the error code
+     * @return {@code void}
+     */
+    public static void error(int errorCode) {
+        try {
+            System.out.println("[Error: "+ errorCode + "]");
+        } catch (Exception error) {
+            error.printStackTrace();
+        }
+    }
 }
 
 class Error {
