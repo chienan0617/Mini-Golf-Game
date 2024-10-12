@@ -17,4 +17,25 @@ public class Temp {
             public static float Z = 0;
         }
     }
+
+    public static class Mouse {
+        public static class Position {
+            public static float tempX = 0;
+            public static float tempY = 0;
+            public static float tempZ = 0;
+        }
+
+        public static class State {
+            public static boolean isPressed = false;
+        }
+    }
+
+    public static class Game {
+        public static class GolfBall {
+            public static class Position {
+                public static float X = 0;
+                public static float Y = 0;
+            }
+        }
+    }
 }

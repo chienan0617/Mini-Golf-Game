@@ -2,8 +2,6 @@ package com.cac.lib;
 
 import java.util.Scanner;
 
-import javax.swing.tree.ExpandVetoException;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Texture;
@@ -14,20 +12,55 @@ public class Event {
     public Error err = new Error();
 
     /**
+     * Log the information to the console.
+     * 
+     * @param message :the message to log.
+     * @return {@code void}
+     */
+    public static void log(Object... message){
+        try {
+            for (Object messages : message) {
+                System.err.print("[INFO]: ");
+                System.err.println(messages);
+            }
+        } catch (Exception error) {
+            error.printStackTrace();
+            Error.error(null);
+        }
+    }
+    /**
+     * Print the content to the console.
+     * 
+     * @param ask :the cintent to be print.
+     * @return {@code void}
+     */
+    public static void print(Object ask) {
+        try {
+            System.out.println(ask);
+        } catch (Exception error) {
+            error.printStackTrace();
+            Error.error(null);
+        }
+    }
+
+    /**
      * This method prints a message to the console. <p>
      * the same as print()
      * 
      * @param message :the message to be print.
      * @see {@link System.out#println()}.
      */
-    public static void print(Object message) {
+    public static void print(Object... messages) {
         try {
-            System.out.println(message);
+            for (Object message : messages) {
+                System.out.println(message);
+            }
         } catch (Exception error) {
             error.printStackTrace();
+            Error.error(null);
         }
     }
-
+    
     /**
      * This method print a message to the console. <p>
      * the same as print()
@@ -36,15 +69,18 @@ public class Event {
      * @param end :the end of the sentence.
      * @see {@link System.out#println()}.
      */
-    public static void print(Object message, Object end) {
+    public static void print(Object end, Object... messages) {
         try {
-            System.out.println(message);
-            System.out.println(end);
+            for (Object message : messages) {
+                System.out.print(message);
+                System.out.println(end);
+            }
         } catch (Exception error) {
             error.printStackTrace();
+            Error.error(null);
         }
     }
-
+    
     /**
      * This method let user input a message and return what they are input.<p>
      * 
@@ -78,6 +114,22 @@ public class Event {
         } catch (Exception error) {
             error.printStackTrace();
         }
+    }
+
+    /**
+     * To return the Windows size
+     * 
+     * @param keys
+     * @return
+     */
+    public static int[] getWindowSize() {
+        try {
+            return new int[] {Gdx.graphics.getWidth(), Gdx.graphics.getHeight()};
+        } catch (Exception error) {
+            error.printStackTrace();
+            Error.error(null);
+        }
+        return null;
     }
 
     /**
