@@ -1,10 +1,13 @@
-package com.cac.lib.init;
+package com.cac.lib.level;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.JsonValue;
 
 import java.util.Arrays;
+
+import org.w3c.dom.ranges.RangeException;
+
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -14,20 +17,19 @@ import com.cac.Set;
 import com.cac.Temp;
 import com.cac.lib.Event;
 
-public class DrawLevel {
+public class Level {
     private static int deviceWidth = Temp.Window.deviceWidth;
     private static int deviceHeight = Temp.Window.deviceHeight;
     private static int blockUnit = Set.Game.Screen.blockUnit;
     private static Json level_json = new Json();
 
-    public DrawLevel() {
+    public Level() {
 
     }
 
-    public static Texture draw(int level) {
-        Pixmap background = new Pixmap(deviceWidth, deviceHeight, Pixmap.Format.RGBA8888);
+    public static Pixmap drawObject(Pixmap background, int level) {
         float[] O = Set.Game.Screen.objectFormat1;
-
+        
         try {
             JsonValue root = level_json.fromJson(null, new FileReader("assets/level/1.json"));
             JsonValue object = root.get("Object");
@@ -35,14 +37,17 @@ public class DrawLevel {
             for (JsonValue array : object) {
                 for (JsonValue A : array) {
                     background.setColor(O[0], O[1], O[2], O[3]);
+                    Event.print(A);
                     background.fillRectangle(A.getInt(0), A.getInt(1), A.getInt(2), A.getInt(3));
                 }
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return background;
+    }
 
-
+    public static Pixmap drawBackground(Pixmap background) {
         for (int posX = 0; posX <= deviceWidth; posX += blockUnit) {
             for (int posY = 0; posY <= deviceHeight; posY += blockUnit) {
                 float[] V = (posX + posY) % 2 == 0 ? Set.Game.Screen.backgroundFormat1 : Set.Game.Screen.backgroundFormat2;
@@ -50,6 +55,13 @@ public class DrawLevel {
                 background.fillRectangle(posX, posY, blockUnit, blockUnit);
             }
         }
+        return background;
+    }
+
+    public static Texture draw(int level) {
+        Pixmap background = new Pixmap(deviceWidth, deviceHeight, Pixmap.Format.RGBA8888);
+        background = drawBackground(background);
+        background = drawObject(background, level);
         return new Texture(background);
     }
 }

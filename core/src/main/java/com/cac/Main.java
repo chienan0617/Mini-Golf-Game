@@ -8,7 +8,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.cac.lib.Event;
-import com.cac.lib.init.DrawLevel;
+import com.cac.lib.level.Level;
 
 import com.cac.Set;
 import com.cac.Temp;
@@ -30,7 +30,7 @@ public class Main extends ApplicationAdapter {
         Event.print(Temp.Window.deviceWidth, Temp.Window.deviceHeight);
         
         batch = new SpriteBatch();
-        image = DrawLevel.draw(1);
+        image = Level.draw(1);
         font = new BitmapFont();
         font2 = new BitmapFont();
     }

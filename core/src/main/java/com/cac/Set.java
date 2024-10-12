@@ -15,4 +15,8 @@ public class Set {
             public static final float[] objectFormat1 = {0.3686f, 0.2313f, 0.1882f, 1.0000f};
         }
     }
+    
+    public static class Camera {
+        public static float speed = 400f;
+    }
 }
