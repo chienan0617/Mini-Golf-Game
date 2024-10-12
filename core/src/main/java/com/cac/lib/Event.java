@@ -2,6 +2,8 @@ package com.cac.lib;
 
 import java.util.Scanner;
 
+import javax.swing.tree.ExpandVetoException;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Texture;
@@ -97,12 +99,46 @@ public class Event {
     }
 
     /**
+     * To detect the mouse pressed
+     * 
+     * @return {@code void}
+     */
+    /**
+     * To detect the mouse pressed
+     *
+     * @param pos the position of the mouse button (1 = left, 2 = middle, 3 = right)
+     * @return {@code boolean} true if the specified mouse button is pressed, false otherwise
+     */
+    public static boolean getMouseDown(int pos) {
+        try {
+            switch (pos) {
+                case 1:
+                    return Gdx.input.isButtonPressed(Input.Buttons.LEFT);
+                case 2:
+                    return Gdx.input.isButtonPressed(Input.Buttons.MIDDLE);
+                case 3:
+                    return Gdx.input.isButtonPressed(Input.Buttons.RIGHT);
+            }
+        } catch (Exception error) {
+            error.printStackTrace();
+            Error.error(null);
+        }
+        return false;
+    }
+
+    /**
      * To get the mouse position.
      * 
      * @return {@code float[]}: {posX, posY}.
      */
     public static float[] getMousePosition() {
-        return new float[] {Gdx.input.getX(), Gdx.input.getY()};
+        try {
+            return new float[] {Gdx.input.getX(), Gdx.input.getY()};
+        } catch (Exception error) {
+            error.printStackTrace();
+            Error.error(null);
+        }
+        return null;
     }
 
     /**
@@ -113,7 +149,13 @@ public class Event {
      * @return {@code float[]}: {posX, posY}.
      */
     public static float[] getCameraPosition() {
-        return new float[] {Temp.Camera.Position.X, Temp.Camera.Position.Y};
+        try {
+            return new float[] {Temp.Camera.Position.X, Temp.Camera.Position.Y};
+        } catch (Exception error) {
+            error.printStackTrace();
+            Error.error(null);
+        }
+        return null;
     }
 
     /**
