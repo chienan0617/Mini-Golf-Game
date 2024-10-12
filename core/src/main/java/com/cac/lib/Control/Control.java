@@ -26,7 +26,14 @@ public class Control {
         }
     }
 
+    private static void test() {
+        if (Event.getPressedDown("E")) {
+            Event.print(Event.getMousePosition());
+        }
+    }
+
     public static void update() {
         detect();
+        test();
     }
 }

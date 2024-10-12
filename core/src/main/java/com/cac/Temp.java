@@ -32,12 +32,16 @@ public class Temp {
 
     public static class Game {
         public static class GolfBall {
+            public static class State {
+                public static boolean isForce = false;
+            }
             public static class Position {
                 public static float X = 0;
                 public static float Y = 0;
 
                 public static float setupX = 0;
                 public static float setupY = 0;
+
             }
         }
     }

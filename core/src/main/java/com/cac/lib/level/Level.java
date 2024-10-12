@@ -6,8 +6,6 @@ import com.badlogic.gdx.utils.JsonValue;
 
 import java.util.Arrays;
 
-import org.w3c.dom.ranges.RangeException;
-
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -29,16 +27,17 @@ public class Level {
 
     private static Pixmap drawObject(Pixmap background, int level) {
         float[] O = Set.Game.Screen.objectFormat1;
-        
         try {
             JsonValue root = level_json.fromJson(null, new FileReader("assets/level/1.json"));
             JsonValue object = root.get("Object");
             
             for (JsonValue array : object) {
                 for (JsonValue A : array) {
+                    // Convert JsonValue to array
+                    int[] coords = A.asIntArray();
                     background.setColor(O[0], O[1], O[2], O[3]);
-                    Event.print(A);
-                    background.fillRectangle(A.getInt(0), A.getInt(1), A.getInt(2), A.getInt(3));
+                    Event.log(A);
+                    background.fillRectangle(coords[0] * blockUnit, coords[1] * blockUnit, blockUnit, blockUnit);
                 }
             }
         } catch (IOException e) {
@@ -46,6 +45,7 @@ public class Level {
         }
         return background;
     }
+    
 
     public static Pixmap drawBackground(Pixmap background) {
         for (int posX = 0; posX <= deviceWidth; posX += blockUnit) {
