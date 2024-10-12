@@ -27,7 +27,7 @@ public class Level {
 
     }
 
-    public static Pixmap drawObject(Pixmap background, int level) {
+    private static Pixmap drawObject(Pixmap background, int level) {
         float[] O = Set.Game.Screen.objectFormat1;
         
         try {

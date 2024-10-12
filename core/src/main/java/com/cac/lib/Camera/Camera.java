@@ -15,7 +15,7 @@ public class Camera {
     public static void init() {
         // 創建正交相機
         camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-        camera.position.set(Temp.Camera.Position.X, Temp.Camera.Position.Y, Temp.Camera.Position.Z);
+        camera.position.set((Temp.Window.deviceWidth / 2), (Temp.Window.deviceHeight / 2), 0);
         camera.update();
     }
     
@@ -29,7 +29,7 @@ public class Camera {
      * 
      * @return {@code void}
      */
-    public static void translate(int posX, int posY, int posZ) {
+    public static void translate(float posX, float posY, float posZ) {
         Temp.Camera.Position.X += posX; Temp.Camera.Position.Y += posX; Temp.Camera.Position.Z += posZ;
         camera.position.set(Temp.Camera.Position.X, Temp.Camera.Position.Y, Temp.Camera.Position.Z);
         camera.update();

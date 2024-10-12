@@ -8,6 +8,8 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.cac.lib.Event;
+import com.cac.lib.Camera.Camera;
+import com.cac.lib.Control.Control;
 import com.cac.lib.level.Level;
 
 import com.cac.Set;
@@ -27,7 +29,7 @@ public class Main extends ApplicationAdapter {
 
         Temp.Window.deviceWidth = Gdx.graphics.getWidth();
         Temp.Window.deviceHeight = Gdx.graphics.getHeight();
-        Event.print(Temp.Window.deviceWidth, Temp.Window.deviceHeight);
+        Camera.init();
         
         batch = new SpriteBatch();
         image = Level.draw(1);
@@ -40,12 +42,19 @@ public class Main extends ApplicationAdapter {
         ScreenUtils.clear(0.15f, 0.15f, 0.2f, 1f);
         batch.begin();
         batch.draw(image, 0, 0);
+        batch.setProjectionMatrix(Camera.getCamera().combined);
         batch.end();
+
+        update();
     }
 
     @Override
     public void dispose() {
         batch.dispose();
         image.dispose();
+    }
+
+    public void update() {
+        //Control.update();
     }
 }

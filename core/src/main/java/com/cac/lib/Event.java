@@ -108,8 +108,8 @@ public class Event {
     /**
      * To get the camera position.
      * 
-     * @see Temp.Position#X
-     * @see Temp.Position#Y
+     * @see Temp.Position.Camera#X
+     * @see Temp.Position.Camera#Y
      * @return {@code float[]}: {posX, posY}.
      */
     public static float[] getCameraPosition() {
