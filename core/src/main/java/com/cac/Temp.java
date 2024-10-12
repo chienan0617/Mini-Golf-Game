@@ -35,6 +35,9 @@ public class Temp {
             public static class Position {
                 public static float X = 0;
                 public static float Y = 0;
+
+                public static float setupX = 0;
+                public static float setupY = 0;
             }
         }
     }

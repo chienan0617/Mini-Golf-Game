@@ -16,39 +16,47 @@ public class Object {
     private static float tempY = Temp.Mouse.Position.tempY;
     private static float ballX = Temp.Game.GolfBall.Position.X;
     private static float ballY = Temp.Game.GolfBall.Position.Y;
+    private static float ballSetupX = Temp.Game.GolfBall.Position.setupX;
+    private static float ballSetupY = Temp.Game.GolfBall.Position.setupY;
     private static boolean mouseState = Temp.Mouse.State.isPressed;
     private static Texture golfBall = new Texture("image/golf_ball.png");
-
     private static long pressTime = 0;
     private static long releaseTime = 0;
 
+    public static void init() {
+        ballX = ballSetupX = Gdx.graphics.getWidth(); ballY = ballSetupY = Set.Game.GolfBall.initPositionY;
+    }
+
     private static void detect() {
         if (Event.getMouseDown(1)) {
-            if (!mouseState) { // 按下瞬間
+            if (!mouseState) {
                 pressTime = System.currentTimeMillis();
                 mouseState = true;
             }
             float[] pos = Event.getMousePosition();
             tempX = pos[0]; tempY = pos[1];
             drawLine();
-        } else if (mouseState) { // 釋放瞬間
+
+        } else if (mouseState) {
             releaseTime = System.currentTimeMillis();
             mouseState = false;
             long pressDuration = releaseTime - pressTime;
-            System.out.println("Mouse press duration: " + pressDuration + " milliseconds");
+            System.out.println(pressDuration + " ms");
+
             goBall();
         }
 }
 
 
     private static void goBall() {
-        Event.print(1);
+        float ballSlope = (tempY - ballY) / (tempX - ballX);
+        Event.print(ballSlope);
     }
 
     private static void drawLine() {
         shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
-        shapeRenderer.setColor(1, 0, 0, 1); // 設置線條顏色為紅色
-        Gdx.gl.glLineWidth(5); // 設置線條寬度為5
+        shapeRenderer.setColor(1, 0, 0, 1);
+        Gdx.gl.glLineWidth(5);
         shapeRenderer.line(tempX, tempY, Event.getWindowSize()[0] / 2, Event.getWindowSize()[1] / 2); // 繪製從 (tempX, tempY) 到 (200, 200) 的線
         shapeRenderer.end();
     }

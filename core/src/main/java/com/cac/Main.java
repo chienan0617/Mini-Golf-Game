@@ -31,6 +31,7 @@ public class Main extends ApplicationAdapter {
         Temp.Window.deviceWidth = Gdx.graphics.getWidth();
         Temp.Window.deviceHeight = Gdx.graphics.getHeight();
         Camera.init();
+        Object.init();
         
         batch = new SpriteBatch();
         image = Level.draw(1);
