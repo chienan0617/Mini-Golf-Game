@@ -26,7 +26,7 @@ android {
   defaultConfig {
     applicationId 'com.cac'
     minSdkVersion 19
-    targetSdkVersion 34
+    targetSdkVersion 24
     versionCode 1
     versionName "1.0"
     multiDexEnabled true
@@ -128,5 +128,6 @@ tasks.register('run', Exec) {
   def adb = path + "/platform-tools/adb"
   commandLine "$adb", 'shell', 'am', 'start', '-n', 'com.cac/com.cac.android.AndroidLauncher'
 }
+
 
 eclipse.project.name = appName + "-android"
