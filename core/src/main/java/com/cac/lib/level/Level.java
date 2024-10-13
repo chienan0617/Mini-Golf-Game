@@ -10,6 +10,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.cac.Set;
 import com.cac.Temp;
@@ -27,22 +28,40 @@ public class Level {
 
     private static Pixmap drawObject(Pixmap background, int level) {
         float[] O = Set.Game.Screen.objectFormat1;
+    
         try {
-            JsonValue root = level_json.fromJson(null, new FileReader("assets/level/1.json"));
+            JsonValue root = level_json.fromJson(null, Gdx.files.internal("level/1.json").reader());
             JsonValue object = root.get("Object");
-            
+    
+            if (object == null) {
+                System.out.println("Failed to load JSON Object");
+                return background;
+            }
+    
             for (JsonValue array : object) {
                 for (JsonValue A : array) {
-                    // Convert JsonValue to array
                     int[] coords = A.asIntArray();
                     background.setColor(O[0], O[1], O[2], O[3]);
-                    Event.log(A);
                     background.fillRectangle(coords[0] * blockUnit, coords[1] * blockUnit, blockUnit, blockUnit);
                 }
             }
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
+    
+        return background;
+    }
+    
+
+    private static Pixmap drawBox(Pixmap background, int level) {
+        switch (level) {
+            case 1:
+                                
+                break;
+            default:
+                break;
+        }
+
         return background;
     }
     

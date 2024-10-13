@@ -19,10 +19,11 @@ public class Event {
      */
     public static void log(Object... message){
         try {
+            System.err.print("[INFO]: ");
             for (Object messages : message) {
-                System.err.print("[INFO]: ");
-                System.err.println(messages);
+                System.err.print(messages + " ");
             }
+            System.err.println();
         } catch (Exception error) {
             error.printStackTrace();
             Error.error(null);
@@ -31,7 +32,7 @@ public class Event {
     /**
      * Print the content to the console.
      * 
-     * @param ask :the cintent to be print.
+     * @param ask :the content to be print.
      * @return {@code void}
      */
     public static void print(Object ask) {
@@ -247,6 +248,51 @@ public class Event {
      */
     public static boolean isTexturePressed(Texture texture) {
         return true;
+    }
+
+    /**
+     * Return the abs.
+     * 
+     * @param input :the input that be abs
+     * @return :the abs of the input
+     */
+    public static Object abs(Object input) {
+        try {
+            if (input instanceof Integer) {
+                return Math.abs((Integer) input);
+            } else if (input instanceof Double) {
+                return Math.abs((Double) input);
+            } else if (input instanceof Float) {
+                return Math.abs((Float) input);
+            } else {
+                throw new IllegalArgumentException("Unsupported type");
+            }
+        } catch (Exception error) {
+            Event.print("can't process input: " + error.getMessage());
+            return null;
+        }
+    }
+
+    /**
+     * Return the average of two numbers.
+     * 
+     * @param X :No. 1 number.
+     * @param Y :No. 2 number.
+     * @return :the average.
+     */
+    public static Object average(Object X, Object Y) {
+        try {
+            if (X instanceof Number && Y instanceof Number) {
+                double xValue = ((Number) X).doubleValue();
+                double yValue = ((Number) Y).doubleValue();
+                return (xValue + yValue) / 2;
+            } else {
+                throw new IllegalArgumentException("Unsupported type: Both parameters must be numbers");
+            }
+        } catch (Exception error) {
+            Event.print("Can't process input: " + error.getMessage());
+            return null;
+        }
     }
 }
 

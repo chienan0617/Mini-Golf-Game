@@ -9,7 +9,7 @@ public class Set {
 
     public static class Game {
         public static class Screen {
-            public static final int blockUnit = 75; // pixel            
+            public static int blockUnit = 75; // pixel            
             public static final float[] backgroundFormat1 = {0.6000f, 0.8980f, 0.3098f, 1.0000f};
             public static final float[] backgroundFormat2 = {0.4235f, 0.7450f, 0.1803f, 1.0000f};
             public static final float[] objectFormat1 = {0.3686f, 0.2313f, 0.1882f, 1.0000f};
@@ -17,6 +17,8 @@ public class Set {
 
         public static class GolfBall {
             public static final int initPositionY = 75;
+            public static final float forcePerNe = 0.99f; // % != > 1
+            public static final float force = 56f; //越小越好
         }
     }
     
