@@ -41,6 +41,9 @@ public class Level {
             for (JsonValue array : object) {
                 for (JsonValue A : array) {
                     int[] coords = A.asIntArray();
+                    Temp.Game.Object.objectList.add(coords);
+
+                    Event.log(Arrays.toString(coords));//
                     background.setColor(O[0], O[1], O[2], O[3]);
                     background.fillRectangle(coords[0] * blockUnit, coords[1] * blockUnit, blockUnit, blockUnit);
                 }
@@ -51,20 +54,6 @@ public class Level {
     
         return background;
     }
-    
-
-    private static Pixmap drawBox(Pixmap background, int level) {
-        switch (level) {
-            case 1:
-                                
-                break;
-            default:
-                break;
-        }
-
-        return background;
-    }
-    
 
     public static Pixmap drawBackground(Pixmap background) {
         for (int posX = 0; posX <= deviceWidth; posX += blockUnit) {

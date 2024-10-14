@@ -9,8 +9,8 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.cac.lib.Event;
-import com.cac.lib.Ball.Ball;
 import com.cac.lib.Camera.Camera;
+import com.cac.lib.Circle.Ball;
 import com.cac.lib.Control.Control;
 import com.cac.lib.level.Level;
 import com.cac.Set;
@@ -78,6 +78,6 @@ public class Main extends ApplicationAdapter {
     }
 
     public void update() {
-        Ball.update(batch);
+        Ball.update(batch, Temp.Game.Object.objectList);
     }
 }

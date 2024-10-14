@@ -1,8 +1,7 @@
-package com.cac.lib.Ball;
+package com.cac.lib.Circle;
 
-import com.cac.Set;
-import com.cac.Temp;
-import com.cac.lib.Event;
+import java.util.ArrayList;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -11,19 +10,24 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.math.Rectangle;
 
+import com.cac.Set;
+import com.cac.Temp;
+import com.cac.lib.Event;
+import com.cac.lib.Circle.Collision;
+
 public class Ball {
     private static ShapeRenderer shapeRenderer = new ShapeRenderer();
+    public static Texture golfBall = new Texture("image/golf_ball.png");
     public static float ballX = Temp.Game.GolfBall.Position.X;
     public static float ballY = Temp.Game.GolfBall.Position.Y;
+    public static float forceX = 0; // 當前X方向力
+    public static float forceY = 0; // 當前Y方向力
     private static float tempX = Temp.Mouse.Position.tempX;
     private static float tempY = Temp.Mouse.Position.tempY;
     private static boolean mouseState = Temp.Mouse.State.isPressed;
     private static boolean isForce = Temp.Game.GolfBall.State.isForce;
-    private static Texture golfBall = new Texture("image/golf_ball.png");
     private static float initialForceX = 0; // 儲存初始X方向力
     private static float initialForceY = 0; // 儲存初始Y方向力
-    private static float forceX = 0; // 當前X方向力
-    private static float forceY = 0; // 當前Y方向力
     private static float pressedMouseX = 0.0f;
     private static float pressedMouseY = 0.0f;
     private static float accumulatePower = 0.0f;
@@ -162,9 +166,15 @@ public class Ball {
         updateBoundingBox();
     }
 
-    public static void update(SpriteBatch batch) {
+    public static void update(SpriteBatch batch, ArrayList<int[]> blockRanges) {
         detect();
         detectPos();
+        drawBall(batch);
+
+        for (int[] range : blockRanges) {
+            Collision.detectCollision(range);
+        }
+    
         drawBall(batch);
     }
 }

@@ -1,5 +1,6 @@
 package com.cac;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 public class Temp {
     public static class Window {
@@ -34,6 +35,10 @@ public class Temp {
     public static class Game {
         public static class Level {
             public static HashMap<Integer, Integer[][]> levelObject = new HashMap<>();
+        }
+
+        public static class Object {
+            public static ArrayList<int[]> objectList = new ArrayList<>();
         }
 
         public static class GolfBall {
