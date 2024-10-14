@@ -7,6 +7,8 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.math.Rectangle;
 
 public class Ball {
@@ -126,7 +128,7 @@ public class Ball {
             // 更新碰撞箱
             updateBoundingBox();
 
-            if (Math.abs(forceX) < 0.01 && Math.abs(forceY) < 0.01) {
+            if (Math.abs(forceX) < Set.Game.GolfBall.minForceToStop && Math.abs(forceY) < Set.Game.GolfBall.minForceToStop) {
                 isForce = false; // 力用完後設置為false
             }
         }

@@ -1,5 +1,6 @@
 package com.cac;
 
+import java.util.HashMap;
 public class Temp {
     public static class Window {
         public static int deviceWidth = 0;
@@ -31,6 +32,10 @@ public class Temp {
     }
 
     public static class Game {
+        public static class Level {
+            public static HashMap<Integer, Integer[][]> levelObject = new HashMap<>();
+        }
+
         public static class GolfBall {
             public static class State {
                 public static boolean isForce = false;
