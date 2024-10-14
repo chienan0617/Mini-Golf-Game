@@ -51,7 +51,6 @@ public class Level {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    
         return background;
     }
 

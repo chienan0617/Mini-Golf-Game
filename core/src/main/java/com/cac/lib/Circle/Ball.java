@@ -31,6 +31,7 @@ public class Ball {
     private static float pressedMouseX = 0.0f;
     private static float pressedMouseY = 0.0f;
     private static float accumulatePower = 0.0f;
+    private static int blockUnit = Set.Game.Screen.blockUnit;
 
     // 新增碰撞箱
     private static Rectangle boundingBox;
@@ -166,13 +167,31 @@ public class Ball {
         updateBoundingBox();
     }
 
+    public static void detectCollision(int[] range) {
+        // Get block position
+        float blockX = range[0] * blockUnit;
+        float blockY = range[1] * blockUnit;
+
+        // Check if ball collides with block
+        if (ballX + golfBall.getWidth() > blockX && ballX < blockX + blockUnit &&
+            ballY + golfBall.getHeight() > blockY && ballY < blockY + blockUnit) {
+            // Collision detected, handle bounce
+            if (ballX < blockX || ballX > blockX + blockUnit) {
+                forceX = -forceX; // Reverse X direction
+            }
+            if (ballY < blockY || ballY > blockY + blockUnit) {
+                forceY = -forceY; // Reverse Y direction
+            }
+        }
+    }
+
     public static void update(SpriteBatch batch, ArrayList<int[]> blockRanges) {
         detect();
         detectPos();
         drawBall(batch);
 
         for (int[] range : blockRanges) {
-            Collision.detectCollision(range);
+            detectCollision(range);
         }
     
         drawBall(batch);

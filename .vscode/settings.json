@@ -4,5 +4,11 @@
     "cSpell.words": [
         "squa"
     ],
+    "C_Cpp.errorSquiggles": "disabled",
+    "workbench.colorCustomizations": {
+        "[Default High Contrast]": {
+            "contrastActiveBorder": "#3b3c36"
+        }
+    },
     
 }
