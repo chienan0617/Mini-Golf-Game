@@ -19,6 +19,8 @@ public class Set {
             public static final int initPositionY = 75;
             public static final float forcePerNe = 0.99f; // % != > 1
             public static final float force = 56f; //越小越好
+            public static final float shotForceWeighted = 3; // * <number>
+            public static final float maxShotForce = 1000.0f;
         }
     }
     

@@ -294,6 +294,33 @@ public class Event {
             return null;
         }
     }
+
+    /**
+     * to calculate the number's square
+     * 
+     * @param number :the number which is going to be square.
+     * @return the square number.
+     */
+    public static Integer squa(Object num) {
+        try {
+            if (num instanceof Integer) {
+                return (Integer) num * (Integer) num;
+            } else if (num instanceof Double) {
+                return (int) ((Double) num * (Double) num);
+            } else if (num instanceof Float) {
+                return (int) ((Float) num * (Float) num);
+            } else if (num instanceof Long) {
+                return (int) ((Long) num * (Long) num);
+            } else {
+                throw new IllegalArgumentException("Unsupported number type");
+            }
+        } catch (Exception error) {
+            error.printStackTrace();
+            Error.error(null); // Assuming Error is a custom class
+        }
+        return null;
+    }
+    
 }
 
 class Error {
