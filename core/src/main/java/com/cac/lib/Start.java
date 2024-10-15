@@ -18,6 +18,7 @@ public class Start {
         Init.init();
         Camera.init();
         Ball.init();
+        Event.log(Temp.Game.GolfBall.Position.X, Temp.Game.GolfBall.Position.Y);
         Background.init();
         Font.init();
         Hole.init();

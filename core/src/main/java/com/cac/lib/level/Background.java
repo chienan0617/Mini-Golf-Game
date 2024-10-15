@@ -49,7 +49,6 @@ public class Background {
                     int[] coords = A.asIntArray();
                     Temp.Game.Object.objectList.add(coords);
 
-                    Event.log(Arrays.toString(coords));//
                     background.setColor(O[0], O[1], O[2], O[3]);
                     background.fillRectangle((coords[0] - 1) * blockUnit, (coords[1] - 1) * blockUnit, blockUnit, blockUnit);
                 }

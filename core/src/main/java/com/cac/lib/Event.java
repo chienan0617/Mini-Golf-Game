@@ -1,11 +1,14 @@
 package com.cac.lib;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
-
+import com.badlogic.gdx.utils.Json;
+import com.badlogic.gdx.utils.JsonValue;
 import com.cac.Temp;
 import com.cac.Set;
 
@@ -16,6 +19,19 @@ public class Event {
     public static void log(Object... message){
         try {
             System.err.print("[INFO]: ");
+            for (Object messages : message) {
+                System.err.print(messages + " ");
+            }
+            System.err.println();
+        } catch (Exception error) {
+            error.printStackTrace();
+            Error.error(null);
+        }
+    }
+
+    public static void warm(Object... message){
+        try {
+            System.err.print("[WARM]: ");
             for (Object messages : message) {
                 System.err.print(messages + " ");
             }

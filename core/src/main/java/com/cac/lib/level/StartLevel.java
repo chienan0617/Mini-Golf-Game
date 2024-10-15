@@ -9,6 +9,7 @@ import com.cac.Temp;
 
 public class StartLevel {
     public static Texture start(int level) {
+        Temp.Game.Level.now = level;
         Texture levelBackground = Background.draw(level);
         Temp.Game.GolfBall.State.run = true;
         Temp.Game.Hole.State.show = true;

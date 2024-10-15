@@ -201,6 +201,13 @@ public class Ball {
         }
     }
 
+    private static void updateParam() {
+        Temp.Game.GolfBall.Position.X = ballX;
+        Temp.Game.GolfBall.Position.Y = ballY;
+        Temp.Mouse.Position.X = tempX;
+        Temp.Mouse.Position.Y = tempY;
+    }
+
 
     public static void update(SpriteBatch batch, ArrayList<int[]> blockRanges) {
         if (Temp.Game.GolfBall.State.run) {
@@ -213,5 +220,6 @@ public class Ball {
             }
             drawBall(batch);
         }
+        updateParam();
     }
 }

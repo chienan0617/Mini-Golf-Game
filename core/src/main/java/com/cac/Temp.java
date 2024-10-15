@@ -38,6 +38,7 @@ public class Temp {
     public static class Game {
         public static class Level {
             public static HashMap<Integer, Integer[][]> levelObject = new HashMap<>();
+            public static int now = -1;
         }
 
         public static class Object {

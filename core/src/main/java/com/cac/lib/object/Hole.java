@@ -3,38 +3,55 @@ package com.cac.lib.object;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.cac.Set;
-import com.cac.Temp;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.files.FileHandle;
+import com.badlogic.gdx.utils.JsonReader;
+import com.badlogic.gdx.utils.JsonValue;
+
 import com.cac.lib.Event;
+import com.cac.Temp;
+import com.cac.Set;
 
 public class Hole {
-    private static float ballX = Temp.Game.GolfBall.Position.X;
-    private static float ballY = Temp.Game.GolfBall.Position.Y;
-    private static float holeX = Temp.Game.Hole.Position.X;
-    private static float holeY = Temp.Game.Hole.Position.Y;
-    private static Texture hole = new Texture("image/hole.png");
+    private static Texture hole = new Texture("image/hole_2.png");
+    private static float holeX;
+    private static float holeY;
 
     public static void init() {
+        getPosJson();
+    }
 
+    private static void getPosJson() {
+        FileHandle file = Gdx.files.internal("level/1.json");
+        JsonReader jsonReader = new JsonReader();
+        JsonValue jsonValue = jsonReader.parse(file);
+        JsonValue holePosition = jsonValue.get("Hole");
+        holeX = holePosition.getFloat(0);
+        holeY = holePosition.getFloat(1);
     }
 
     private static void drawHole(SpriteBatch batch) {
         batch.begin();
-        batch.draw(hole, holeX, holeY);
+        batch.draw(hole, holeX, holeY); // 使用 holeX 和 holeY 繪製洞的位置
         batch.end();
     }
 
     public static void detectBallIn() {
-        if (Math.sqrt(Event.squa(ballX - holeX) + Event.squa(ballY - holeY)) <= Set.Game.Hole.ballInDistance) {
+        float distance = (float) Math.sqrt(Event.squa(Temp.Game.GolfBall.Position.X - holeX) + Event.squa(Temp.Game.GolfBall.Position.Y - holeY));
+        if (distance <= Set.Game.Hole.ballInDistance) {
             Ball.ballIn();
         }
+    }
+
+    public static void updateParam() {
+        // 更新參數
     }
 
     public static void update(SpriteBatch batch) {
         if (Temp.Game.Hole.State.show) {
             drawHole(batch);
         }
-
         detectBallIn();
     }
 }
+

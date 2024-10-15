@@ -30,7 +30,7 @@ public class Set {
         }
 
         public static class Hole {
-            public static final float ballInDistance = 5.0f;
+            public static final float ballInDistance = 25.0f;
         }
     }
     
