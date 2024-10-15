@@ -1,7 +1,7 @@
-package com.cac.lib.Control;
+package com.cac.lib.control;
 
 import com.cac.lib.Event;
-import com.cac.lib.Camera.Camera;
+import com.cac.lib.camera.Camera;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.cac.Set;

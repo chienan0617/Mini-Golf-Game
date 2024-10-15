@@ -1,4 +1,4 @@
-package com.cac.lib.Circle;
+package com.cac.lib.object;
 
 import java.util.ArrayList;
 
@@ -13,7 +13,7 @@ import com.badlogic.gdx.math.Rectangle;
 import com.cac.Set;
 import com.cac.Temp;
 import com.cac.lib.Event;
-import com.cac.lib.Circle.Collision;
+import com.cac.lib.object.Collision;
 
 public class Ball {
     private static ShapeRenderer shapeRenderer = new ShapeRenderer();
@@ -22,8 +22,8 @@ public class Ball {
     public static float ballY = Temp.Game.GolfBall.Position.Y;
     public static float forceX = 0; // 當前X方向力
     public static float forceY = 0; // 當前Y方向力
-    private static float tempX = Temp.Mouse.Position.tempX;
-    private static float tempY = Temp.Mouse.Position.tempY;
+    private static float tempX = Temp.Mouse.Position.X;
+    private static float tempY = Temp.Mouse.Position.Y;
     private static boolean mouseState = Temp.Mouse.State.isPressed;
     private static boolean isForce = Temp.Game.GolfBall.State.isForce;
     private static float initialForceX = 0; // 儲存初始X方向力
@@ -65,7 +65,7 @@ public class Ball {
             // float nowMouseY = Event.getMousePosition()[1];
         
             // 計算滑鼠按下和釋放時的位置距離，來作為累積力量
-            Event.log("Force:", accumulatePower);
+            // Event.log("Force:", accumulatePower)
 
             // 根據拖動的距離計算力道
             float dx = tempX - ballX;
@@ -169,21 +169,34 @@ public class Ball {
 
     public static void detectCollision(int[] range) {
         // Get block position
-        float blockX = range[0] * blockUnit;
-        float blockY = range[1] * blockUnit;
-
+        float blockX = (range[0] - 1) * blockUnit;
+        float blockY = (Temp.Game.Object.blockQuantityY - range[1] - 1) * blockUnit; //WARM "Desktop: 1; Android: 1"
+    
         // Check if ball collides with block
         if (ballX + golfBall.getWidth() > blockX && ballX < blockX + blockUnit &&
             ballY + golfBall.getHeight() > blockY && ballY < blockY + blockUnit) {
+            
             // Collision detected, handle bounce
-            if (ballX < blockX || ballX > blockX + blockUnit) {
+            float overlapLeft = (ballX + golfBall.getWidth()) - blockX;
+            float overlapRight = (blockX + blockUnit) - ballX;
+            float overlapTop = (ballY + golfBall.getHeight()) - blockY;
+            float overlapBottom = (blockY + blockUnit) - ballY;
+    
+            boolean collisionFromLeft = overlapLeft <= overlapRight && overlapLeft <= overlapTop && overlapLeft <= overlapBottom;
+            boolean collisionFromRight = overlapRight <= overlapLeft && overlapRight <= overlapTop && overlapRight <= overlapBottom;
+            boolean collisionFromTop = overlapTop <= overlapLeft && overlapTop <= overlapRight && overlapTop <= overlapBottom;
+            boolean collisionFromBottom = overlapBottom <= overlapLeft && overlapBottom <= overlapRight && overlapBottom < overlapTop;
+    
+            if (collisionFromLeft || collisionFromRight) {
                 forceX = -forceX; // Reverse X direction
             }
-            if (ballY < blockY || ballY > blockY + blockUnit) {
+    
+            if (collisionFromTop || collisionFromBottom) {
                 forceY = -forceY; // Reverse Y direction
             }
         }
     }
+
 
     public static void update(SpriteBatch batch, ArrayList<int[]> blockRanges) {
         detect();

@@ -1,4 +1,4 @@
-package com.cac.lib.Circle;
+package com.cac.lib.object;
 
 import com.badlogic.gdx.graphics.Texture;
 

@@ -1,4 +1,4 @@
-package com.cac.lib.Camera;
+package com.cac.lib.camera;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;

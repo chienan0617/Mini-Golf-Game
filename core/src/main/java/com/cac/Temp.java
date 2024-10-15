@@ -3,6 +3,9 @@ package com.cac;
 import java.util.ArrayList;
 import java.util.HashMap;
 public class Temp {
+    public static class Device {
+        public static String type = "";
+    }
     public static class Window {
         public static int deviceWidth = 0;
         public static int deviceHeight = 0;
@@ -22,9 +25,9 @@ public class Temp {
 
     public static class Mouse {
         public static class Position {
-            public static float tempX = 0;
-            public static float tempY = 0;
-            public static float tempZ = 0;
+            public static float X = 0;
+            public static float Y = 0;
+            public static float Z = 0;
         }
 
         public static class State {
@@ -39,6 +42,8 @@ public class Temp {
 
         public static class Object {
             public static ArrayList<int[]> objectList = new ArrayList<>();
+            public static int blockQuantityX = 0;
+            public static int blockQuantityY = 0;
         }
 
         public static class GolfBall {

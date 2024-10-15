@@ -11,6 +11,7 @@ import java.io.FileReader;
 import java.io.IOException;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.ai.steer.behaviors.MatchVelocity;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.cac.Set;
 import com.cac.Temp;
@@ -24,6 +25,11 @@ public class Level {
 
     public Level() {
 
+    }
+
+    public static void init() {
+        Temp.Game.Object.blockQuantityX = Math.round(Temp.Window.deviceWidth / blockUnit) + 1;
+        Temp.Game.Object.blockQuantityY = Math.round(Temp.Window.deviceHeight / blockUnit) + 1;
     }
 
     private static Pixmap drawObject(Pixmap background, int level) {
@@ -45,7 +51,7 @@ public class Level {
 
                     Event.log(Arrays.toString(coords));//
                     background.setColor(O[0], O[1], O[2], O[3]);
-                    background.fillRectangle(coords[0] * blockUnit, coords[1] * blockUnit, blockUnit, blockUnit);
+                    background.fillRectangle((coords[0] - 1) * blockUnit, (coords[1] - 1) * blockUnit, blockUnit, blockUnit);
                 }
             }
         } catch (Exception e) {

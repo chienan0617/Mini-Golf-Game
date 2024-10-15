@@ -15,6 +15,11 @@ public class Set {
             public static final float[] objectFormat1 = {0.3686f, 0.2313f, 0.1882f, 1.0000f};
         }
 
+        public static class font {
+            public static final int size = 72;
+            public static final float[] color = {1.0f, 1.0f, 1.0f, 1.0f};
+        }
+
         public static class GolfBall {
             public static final int initPositionY = 75;
             public static final float forcePerNe = 0.985f; // % != > 1

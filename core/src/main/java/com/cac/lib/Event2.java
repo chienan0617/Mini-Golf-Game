@@ -330,8 +330,8 @@ public class Event2 {
     
 }
 
-class Error {
-    public static void error(String error) {
-        System.out.println("[Error] :" + error);
-    }
-}
+// class Error {
+//     public static void error(String error) {
+//         System.out.println("[Error] :" + error);
+//     }
+// }
