@@ -17,13 +17,13 @@ import com.cac.Set;
 import com.cac.Temp;
 import com.cac.lib.Event;
 
-public class Level {
+public class Background {
     private static int deviceWidth = Temp.Window.deviceWidth;
     private static int deviceHeight = Temp.Window.deviceHeight;
     private static int blockUnit = Set.Game.Screen.blockUnit;
     private static Json level_json = new Json();
 
-    public Level() {
+    public Background() {
 
     }
 

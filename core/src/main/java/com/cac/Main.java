@@ -14,7 +14,8 @@ import com.cac.lib.camera.Camera;
 import com.cac.lib.object.Ball;
 import com.cac.lib.object.Hole;
 import com.cac.lib.control.Control;
-import com.cac.lib.level.Level;
+import com.cac.lib.level.Background;
+import com.cac.lib.level.StartLevel;
 import com.cac.lib.ui.Font;
 import com.cac.Set;
 import com.cac.Temp;
@@ -32,7 +33,7 @@ public class Main extends ApplicationAdapter {
         Start.init();
 
         batch = new SpriteBatch();
-        image = Start.create();
+        image = StartLevel.start(1);
     }
 
     @Override

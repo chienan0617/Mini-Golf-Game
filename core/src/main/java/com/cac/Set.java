@@ -28,6 +28,10 @@ public class Set {
             public static final float maxShotForce = 1000.0f;
             public static final float minForceToStop = 15.0f;
         }
+
+        public static class Hole {
+            public static final float ballInDistance = 5.0f;
+        }
     }
     
     public static class Camera {

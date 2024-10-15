@@ -94,6 +94,10 @@ public class Ball {
         }
     }
 
+    public static void ballIn() {
+        Temp.Game.GolfBall.State.run = false;
+    }
+
     private static void drawLine() {
         shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
         shapeRenderer.setColor(1, 0, 0, 1); // Red color
@@ -199,14 +203,15 @@ public class Ball {
 
 
     public static void update(SpriteBatch batch, ArrayList<int[]> blockRanges) {
-        detect();
-        detectPos();
-        drawBall(batch);
-
-        for (int[] range : blockRanges) {
-            detectCollision(range);
-        }
+        if (Temp.Game.GolfBall.State.run) {
+            detect();
+            detectPos();
+            drawBall(batch);
     
-        drawBall(batch);
+            for (int[] range : blockRanges) {
+                detectCollision(range);
+            }
+            drawBall(batch);
+        }
     }
 }

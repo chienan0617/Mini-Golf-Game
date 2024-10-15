@@ -49,6 +49,7 @@ public class Temp {
         public static class GolfBall {
             public static class State {
                 public static boolean isForce = false;
+                public static boolean run = false;
             }
             public static class Position {
                 public static float X = 0;
@@ -57,6 +58,17 @@ public class Temp {
                 public static float setupX = 0;
                 public static float setupY = 0;
 
+            }
+        }
+
+        public static class Hole {
+            public static class Position {
+                public static float X = 0;
+                public static float Y = 0;
+            }
+
+            public static class State {
+                public static boolean show = false;
             }
         }
     }
