@@ -18,17 +18,10 @@ public class Start {
         Init.init();
         Camera.init();
         Ball.init();
-        Event.log(Temp.Game.GolfBall.Position.X, Temp.Game.GolfBall.Position.Y);
         Background.init();
         Font.init();
         Hole.init();
     }
-
-    // public static Texture create() { // test
-    //     Texture level = Background.draw(1); //
-    //     Temp.Game.GolfBall.State.run = true;
-    //     return level;
-    // }
 
     public static void update(SpriteBatch batch) {
         Ball.update(batch, Temp.Game.Object.objectList);
