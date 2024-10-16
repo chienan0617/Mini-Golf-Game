@@ -14,5 +14,7 @@ public class Init {
     public static void init() {
         Temp.Window.deviceWidth = Gdx.graphics.getWidth();
         Temp.Window.deviceHeight = Gdx.graphics.getHeight();
+        Temp.Game.Level.startLevel = 1;
+        Temp.State.initialScreen = true;
     }
 }

@@ -39,6 +39,7 @@ public class Temp {
         public static class Level {
             public static HashMap<Integer, Integer[][]> levelObject = new HashMap<>();
             public static int now = -1;
+            public static int startLevel = -1;
         }
 
         public static class Object {
@@ -72,5 +73,12 @@ public class Temp {
                 public static boolean show = false;
             }
         }
+    }
+
+    public static class State {
+        public static boolean runStartLevel = false;
+        public static int runStartLevelLevel = 1;
+
+        public static boolean initialScreen = false;
     }
 }

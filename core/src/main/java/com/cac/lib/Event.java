@@ -7,6 +7,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.JsonValue;
 import com.cac.Temp;
@@ -94,6 +95,21 @@ public class Event {
             System.out.println("[Error: "+ errorCode + "]");
         } catch (Exception error) {
             error.printStackTrace();
+        }
+    }
+
+    public static void draw(SpriteBatch batch, Texture texture, int posX, int posY) {
+        batch.begin();
+        batch.draw(texture, posX, posY);
+        batch.end();
+    }
+
+    public static void wait(int mils) {
+        try {
+            Thread.sleep(mils);
+        } catch (InterruptedException error) {
+            error.printStackTrace();
+            Error.error(null);
         }
     }
 

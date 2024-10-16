@@ -10,6 +10,7 @@ import com.badlogic.gdx.utils.JsonValue;
 
 import com.cac.lib.Event;
 import com.cac.Temp;
+import com.cac.Main;
 import com.cac.Set;
 
 public class Hole {
@@ -30,7 +31,9 @@ public class Hole {
         holeY = holePosition.getFloat(1);
     }
 
-    private static void drawHole(SpriteBatch batch) {
+    private static void drawHole() {
+        SpriteBatch batch = Main.getBatch();
+
         batch.begin();
         batch.draw(hole, holeX, holeY); // 使用 holeX 和 holeY 繪製洞的位置
         batch.end();
@@ -47,9 +50,9 @@ public class Hole {
         // 更新參數
     }
 
-    public static void update(SpriteBatch batch) {
+    public static void update() {
         if (Temp.Game.Hole.State.show) {
-            drawHole(batch);
+            drawHole();
         }
         detectBallIn();
     }

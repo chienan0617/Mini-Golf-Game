@@ -9,7 +9,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.cac.lib.Event;
-import com.cac.lib.Start;
+import com.cac.lib.All;
 import com.cac.lib.camera.Camera;
 import com.cac.lib.object.Ball;
 import com.cac.lib.object.Hole;
@@ -23,14 +23,14 @@ import com.cac.Temp;
 import java.math.RoundingMode;
 
 public class Main extends ApplicationAdapter {
-    private SpriteBatch batch;
+    private static SpriteBatch batch;
     private Texture image;
 
     @Override
     public void create() {
         new Temp();
         new Set();
-        Start.init();
+        All.init();
 
         batch = new SpriteBatch();
         image = StartLevel.start(1);
@@ -54,6 +54,10 @@ public class Main extends ApplicationAdapter {
     }
 
     public void update() {
-        Start.update(batch);
+        All.update();
+    }
+
+    public static SpriteBatch getBatch() {
+        return batch;
     }
 }

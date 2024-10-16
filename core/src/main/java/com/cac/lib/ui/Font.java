@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
+import com.cac.Main;
 import com.cac.Temp;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -20,7 +21,9 @@ public class Font {
         generator.dispose(); // Don't forget to dispose of the generator
     }
 
-    private static void drawFont(SpriteBatch batch) {
+    private static void drawFont() {
+        SpriteBatch batch = Main.getBatch();
+
         BigDecimal ballXRounded = BigDecimal.valueOf(Temp.Game.GolfBall.Position.X).setScale(2, RoundingMode.HALF_UP);
         BigDecimal ballYRounded = BigDecimal.valueOf(Temp.Game.GolfBall.Position.Y).setScale(2, RoundingMode.HALF_UP);
 
@@ -32,7 +35,7 @@ public class Font {
         batch.end();
     }
 
-    public static void update(SpriteBatch batch) {
-        drawFont(batch);
+    public static void update() {
+        drawFont();
     }
 }

@@ -9,10 +9,12 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.math.Rectangle;
-
+import com.cac.Base;
+import com.cac.Main;
 import com.cac.Set;
 import com.cac.Temp;
 import com.cac.lib.Event;
+import com.cac.lib.game.GameMain;
 import com.cac.lib.object.Collision;
 
 public class Ball {
@@ -96,6 +98,7 @@ public class Ball {
 
     public static void ballIn() {
         Temp.Game.GolfBall.State.run = false;
+        GameMain.nextLevel();
     }
 
     private static void drawLine() {
@@ -209,7 +212,9 @@ public class Ball {
     }
 
 
-    public static void update(SpriteBatch batch, ArrayList<int[]> blockRanges) {
+    public static void update(ArrayList<int[]> blockRanges) {
+        SpriteBatch batch = Main.getBatch();
+
         if (Temp.Game.GolfBall.State.run) {
             detect();
             detectPos();

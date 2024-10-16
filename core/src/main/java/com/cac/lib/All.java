@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.ui.TextArea;
 import com.cac.lib.camera.Camera;
+import com.cac.lib.game.GameMain;
 import com.cac.lib.init.Init;
 import com.cac.lib.level.Background;
 import com.cac.lib.object.Ball;
@@ -13,7 +14,7 @@ import com.cac.lib.object.Hole;
 import com.cac.Temp;
 import com.cac.Set;
 
-public class Start {
+public class All {
     public static void init() {
         Init.init();
         Camera.init();
@@ -23,9 +24,11 @@ public class Start {
         Hole.init();
     }
 
-    public static void update(SpriteBatch batch) {
-        Ball.update(batch, Temp.Game.Object.objectList);
-        Font.update(batch);
-        Hole.update(batch);
+    public static void update() {
+        Ball.update(Temp.Game.Object.objectList);
+        Camera.update();
+        Font.update();
+        Hole.update();
+        GameMain.update();
     }
 }

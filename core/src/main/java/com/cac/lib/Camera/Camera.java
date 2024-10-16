@@ -42,4 +42,8 @@ public class Camera {
     public static OrthographicCamera getCamera() {
         return camera;
     }
+
+    public static void update() {
+        
+    }
 }

@@ -13,6 +13,7 @@ public class Set {
             public static final float[] backgroundFormat1 = {0.6000f, 0.8980f, 0.3098f, 1.0000f};
             public static final float[] backgroundFormat2 = {0.4235f, 0.7450f, 0.1803f, 1.0000f};
             public static final float[] objectFormat1 = {0.3686f, 0.2313f, 0.1882f, 1.0000f};
+            public static final float[] waitScreenFormat1 = {0.6000f, 0.8980f, 0.3098f, 1.0000f};
         }
 
         public static class font {
